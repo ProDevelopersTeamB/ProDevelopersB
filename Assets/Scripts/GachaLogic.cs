@@ -28,6 +28,8 @@ public class GachaLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1024, 768, false);
+
         AudioManager.Instance.PlayBGM("Title", 1.0f, true);
         state = State.Idle;
         drumRollPosX = -6.0f;
