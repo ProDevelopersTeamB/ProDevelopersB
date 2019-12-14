@@ -15,8 +15,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D target)
     {
-        jump = false;
+        if(target.gameObject.tag == "floor")
+            jump = false;
+        else if(target.gameObject.tag == "floor2")
+            gameOver();
+        else if(target.gameObject.tag == "floor")
+            gameOver();
+    }
+
+    private void gameOver()
+    {
+        Debug.Log("GameOver");
     }
 }
