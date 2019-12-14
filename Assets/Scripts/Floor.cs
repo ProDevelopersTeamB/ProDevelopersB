@@ -12,7 +12,7 @@ public class Floor : MonoBehaviour
 
         if(transform.localPosition.x < -612f)
         {
-            // Destroy (gameObject);
+            Destroy (gameObject);
         }
     }
 }
