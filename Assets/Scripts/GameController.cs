@@ -32,14 +32,14 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         GameScore += Time.deltaTime * (10f * (5f + player.Speed / 10f));
-        scoreText.text = "距離: " + (int)GameScore;
+        scoreText.text = "SCORE: " + (int)GameScore;
 
         GameTime += Time.deltaTime;
         timeText.text = "時間: " + (int)GameTime;
 
         if(!obstacleController.CreateFlg)
         {
-            switch (Random.Range(1, 3))
+            switch (Random.Range(1, 4))
             {
                 case 1:
                     StartCoroutine(obstacleController.CreateObstacle());

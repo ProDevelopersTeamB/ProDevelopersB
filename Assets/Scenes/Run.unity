@@ -800,9 +800,7 @@ MonoBehaviour:
   floor3: {fileID: 1676617448047550250, guid: 095864eca80ad4576b203178e53abde0, type: 3}
   canvas: {fileID: 1628405386}
   player: {fileID: 446241724}
-  ObstacleFlg: 0
-  Floor2Flg: 0
-  Floor3Flg: 0
+  CreateFlg: 0
 --- !u!1 &406881845
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &406881846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1003,7 +1001,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &446241724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2117,7 +2115,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20, y: -20}
-  m_SizeDelta: {x: 400, y: 40}
+  m_SizeDelta: {x: 595.9, y: 111.9}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1362895886
 MonoBehaviour:
@@ -2138,19 +2136,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: b170a12ede6ebd54cb19d01b398931ac, type: 3}
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 9999999999'
+  m_Text: 'SCORE: 9999999999'
 --- !u!222 &1362895887
 CanvasRenderer:
   m_ObjectHideFlags: 0

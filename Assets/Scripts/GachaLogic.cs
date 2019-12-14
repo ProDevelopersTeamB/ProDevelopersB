@@ -70,7 +70,7 @@ public class GachaLogic : MonoBehaviour
 
                 break;
             case State.Lottery:
-                int rarityRand = Random.Range(1, 100);
+                int rarityRand = Random.Range(1, 101);
                 int rarity;
                 float coefficient;
                 if (rarityRand <= 5)
@@ -99,7 +99,7 @@ public class GachaLogic : MonoBehaviour
                     coefficient = 0.5f;
                 }
 
-                int charaRand = Random.Range(0, characters.Count - 1);
+                int charaRand = Random.Range(0, characters.Count);
                 resultObject = characters[charaRand];
                 Character resultCharacter = resultObject.GetComponent<Character>();
                 resultCharacter.rarity = rarity;
