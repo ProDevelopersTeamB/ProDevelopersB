@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 3690792}
   - component: {fileID: 3690794}
   - component: {fileID: 3690793}
+  - component: {fileID: 3690795}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -198,6 +199,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3690791}
   m_CullTransparentMesh: 0
+--- !u!95 &3690795
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690791}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eacdda13793a5d46bcddc8ffe898dfc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &412165636
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +555,7 @@ GameObject:
   - component: {fileID: 986055242}
   - component: {fileID: 986055241}
   - component: {fileID: 986055240}
+  - component: {fileID: 986055243}
   m_Layer: 5
   m_Name: GachaButton
   m_TagString: Untagged
@@ -696,6 +717,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986055238}
   m_CullTransparentMesh: 0
+--- !u!95 &986055243
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986055238}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec9ecf072dc957f4c9abb86cb305bf3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1064213069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1084,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efafdbf5f2057c649a7b735aa1e5e754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syuutyuusen: {fileID: 7317876199639524777, guid: 9cfedc74f04933646a6babc669283bf4,
+    type: 3}
   characters:
   - {fileID: 6757509372223206973, guid: c1be88c1d823f714e83c20971edd92b6, type: 3}
   - {fileID: 6654400089923646301, guid: 68df740f2ffb34b49bf16238b0d6b8c3, type: 3}
