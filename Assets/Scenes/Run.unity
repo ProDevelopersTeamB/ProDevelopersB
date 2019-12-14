@@ -797,10 +797,12 @@ MonoBehaviour:
   obstacle: {fileID: 2542185539970746559, guid: 3c9857802789a4660805415997835c9d,
     type: 3}
   floor2: {fileID: 1676617448047550250, guid: 709e5a13cd2e2438f961281154a59339, type: 3}
+  floor3: {fileID: 1676617448047550250, guid: 095864eca80ad4576b203178e53abde0, type: 3}
   canvas: {fileID: 1628405386}
   player: {fileID: 446241724}
   ObstacleFlg: 0
   Floor2Flg: 0
+  Floor3Flg: 0
 --- !u!1 &406881845
 GameObject:
   m_ObjectHideFlags: 0
