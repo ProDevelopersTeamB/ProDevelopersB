@@ -8,13 +8,16 @@ public class ScoreResult : MonoBehaviour
 {
     public int kyori;
     public float time;
-    public int score;
+     int score;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(score);
         AudioManager.Instance.PlayBGM("Result");
-        string text = "スコア: " + score; 
+        Debug.Log(score);
+        string text = "スコア: " + score;
+        Debug.Log(score);
         /*
             string text = "キョリ: " + kyori + "\n\n";
         text += "タイム: " + time + " sec.\n\n";
@@ -32,5 +35,10 @@ public class ScoreResult : MonoBehaviour
     public void GoToTitle()
     {
         SceneManager.LoadScene("GashaScene");
+    }
+
+    public void SetScore(int score)
+    {
+        this.score = score;
     }
 }
