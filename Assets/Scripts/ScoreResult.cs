@@ -14,10 +14,12 @@ public class ScoreResult : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayBGM("Result");
-        string text = "キョリ: " + kyori + "\n\n";
+        string text = "スコア: " + score; 
+        /*
+            string text = "キョリ: " + kyori + "\n\n";
         text += "タイム: " + time + " sec.\n\n";
         text += "とくてん: " + score + "\n\n\n";
-        text += "ひょうか: " + "S" + "\n\n";
+        text += "ひょうか: " + "S" + "\n\n */
         GetComponent<Text>().text = text;
     }
 

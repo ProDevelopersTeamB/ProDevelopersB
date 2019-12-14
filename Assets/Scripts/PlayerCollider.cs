@@ -12,11 +12,12 @@ public class PlayerCollider : MonoBehaviour
 
     private void gameOver()
     {
+        GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
         StartCoroutine(this.invokeActionOnloadScene("ResultScore", () => {
             var scoreResult = FindObjectOfType<ScoreResult>() as ScoreResult;
-            scoreResult.kyori = 10;
-            scoreResult.time = 20;
-            scoreResult.score = 30;
+            scoreResult.kyori = (int)gc.GameScore;
+            scoreResult.time = gc.GameTime;
+            scoreResult.score = (int)gc.GameScore;
         }));
 
     }
