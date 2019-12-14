@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private FloorController floorController;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text timeText;
+    [SerializeField] private PlayerController player;
     public float GameScore;
     public float GameTime;
 
@@ -30,7 +31,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        GameScore += Time.deltaTime * 10;
+        GameScore += Time.deltaTime * (10f * (5f + player.Speed / 10f));
         scoreText.text = "距離: " + (int)GameScore;
 
         GameTime += Time.deltaTime;

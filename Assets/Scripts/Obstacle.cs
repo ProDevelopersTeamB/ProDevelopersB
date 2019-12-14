@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    const float SPEED = 5f;
+    public float Speed;
+
     private void Update()
     {
         Vector3 pos = transform.localPosition;
-        pos.x -= 5f;
+        pos.x -= (SPEED + Speed / 10f);
         transform.localPosition = pos;
 
         // if(transform.localPosition.x < -612f)
