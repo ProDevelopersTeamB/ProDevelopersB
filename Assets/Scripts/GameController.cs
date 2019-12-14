@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -18,28 +19,31 @@ public class GameController : MonoBehaviour
         switch (Random.Range(1, 3))
         {
             case 1:
-                AudioManager.Instance.PlayBGM("Run");
+                AudioManager.Instance.PlayBGM("Run", 0.5f);
                 break;
             case 2:
-                AudioManager.Instance.PlayBGM("Run_2");
+                AudioManager.Instance.PlayBGM("Run_2", 0.5f);
                 break;
             case 3:
-                AudioManager.Instance.PlayBGM("Run_3");
+                AudioManager.Instance.PlayBGM("Run_3", 0.5f);
                 break;
         }
     }
 
     private void Update()
     {
-        GameScore += Time.deltaTime * (10f * (5f + player.Speed / 10f));
+        GameScore += Time.deltaTime * player.Speed;
         scoreText.text = "SCORE: " + (int)GameScore;
 
         GameTime += Time.deltaTime;
-        timeText.text = "時間: " + (int)GameTime;
+        timeText.text = (int)GameTime + "(time) x " + player.Speed + "(speed)";
 
-        if(!obstacleController.CreateFlg)
+        int randMax = Mathf.Min(6, 2 + (int)(GameTime / 3));
+
+
+        if (!obstacleController.CreateFlg)
         {
-            switch (Random.Range(1, 4))
+            switch (Random.Range(1, randMax))
             {
                 case 1:
                     StartCoroutine(obstacleController.CreateObstacle());
@@ -49,6 +53,12 @@ public class GameController : MonoBehaviour
                     break;
                 case 3:
                     StartCoroutine(obstacleController.CreateFloor3());
+                    break;
+                case 4:
+                    StartCoroutine(obstacleController.CreateFloor4());
+                    break;
+                case 5:
+                    StartCoroutine(obstacleController.CreateFloor5());
                     break;
             }
         }
@@ -62,5 +72,10 @@ public class GameController : MonoBehaviour
         // {
         //     StartCoroutine(obstacleController.CreateObstacle());
         // }
+    }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene("GashaScene");
     }
 }

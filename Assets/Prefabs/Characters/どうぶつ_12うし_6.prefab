@@ -118,3 +118,4 @@ MonoBehaviour:
   rarity: 4
   speed: 10
   jump: 6
+  isBig: 1

@@ -8,13 +8,13 @@ public class ScoreResult : MonoBehaviour
 {
     public int kyori;
     public float time;
-     int score;
+    int score;
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(score);
-        AudioManager.Instance.PlayBGM("Result");
+        AudioManager.Instance.PlayBGM("Result", 0.5f);
         Debug.Log(score);
         string text = "スコア: " + score;
         Debug.Log(score);
@@ -29,7 +29,10 @@ public class ScoreResult : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("space"))
+        {
+            GoToTitle();
+        }
     }
 
     public void GoToTitle()

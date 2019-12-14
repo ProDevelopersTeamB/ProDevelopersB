@@ -10,15 +10,15 @@ public class FloorController : MonoBehaviour
     private GameObject tempFloor;
     private void Start()
     {
-        tempFloor = Instantiate (floor, canvas.transform);
+        tempFloor = Instantiate(floor, canvas.transform);
     }
 
     private void Update()
     {
         var pos = tempFloor.transform.localPosition;
-        if(pos.x < 424f)
+        if (pos.x < 424f)
         {
-            tempFloor = Instantiate (floor, canvas.transform);
+            tempFloor = Instantiate(floor, canvas.transform);
             tempFloor.GetComponent<Floor>().Speed = player.Speed;
         }
     }

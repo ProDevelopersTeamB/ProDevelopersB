@@ -12,6 +12,7 @@ public class GachaLogic : MonoBehaviour
     Text resultText;
     float drumRollPosX;
     float time, resultTime, speed, jump;
+    bool isBig;
 
     enum State
     {
@@ -20,6 +21,7 @@ public class GachaLogic : MonoBehaviour
         DrumRoll,
         Lottery,
         Result,
+        End,
     }
     State state;
 
@@ -41,7 +43,7 @@ public class GachaLogic : MonoBehaviour
         {
             case State.DrumRollInit:
                 resultText = GameObject.Find("ResultText").GetComponent<Text>();
-                for (int i=0; i<8; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     foreach (GameObject charaObj in characters)
                     {
@@ -56,7 +58,7 @@ public class GachaLogic : MonoBehaviour
                 break;
             case State.DrumRoll:
                 this.transform.position = new Vector2(this.transform.position.x - 0.2f, 0);
-                if (!AudioManager.Instance.IsPlayingSE() || Input.GetMouseButtonDown(0))
+                if (!AudioManager.Instance.IsPlayingSE() || Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
                 {
                     Instantiate(syuutyuusen);
                     AudioManager.Instance.PlaySE("RollFinish");
@@ -105,6 +107,7 @@ public class GachaLogic : MonoBehaviour
                 resultCharacter.rarity = rarity;
                 speed = resultCharacter.speed * coefficient;
                 jump = resultCharacter.jump * coefficient;
+                isBig = resultCharacter.isBig;
                 resultCharacter.SetSpeed(speed);
                 resultCharacter.SetJump(jump);
 
@@ -116,19 +119,25 @@ public class GachaLogic : MonoBehaviour
                 }
                 text += "\nスピード: " + speed;
                 text += "\nジャンプ: " + jump;
+                if (isBig)
+                {
+                    text += "\nスキル: 1回だけブロックを破壊";
+                }
                 resultText.text = text;
                 state = State.Result;
                 resultTime = 0;
                 break;
             case State.Result:
                 resultTime += Time.deltaTime;
-                if (resultTime > 3.0f || Input.GetMouseButtonDown(0))
+                if (resultTime > 3.0f || Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
                 {
-                    StartCoroutine(this.invokeActionOnloadScene("Run", () => {
+                    StartCoroutine(this.invokeActionOnloadScene("Run", () =>
+                    {
                         var player = FindObjectOfType<PlayerController>() as PlayerController;
-                        player.setParam(speed, jump);
+                        player.setParam(speed, jump, isBig);
                         player.setAnimal(resultObject);
                     }));
+                    state = State.End;
                 }
                 break;
             default:
