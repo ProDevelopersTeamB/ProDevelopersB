@@ -11,7 +11,23 @@ public class GameController : MonoBehaviour
     [SerializeField] private Text timeText;
     public float GameScore;
     public float GameTime;
-    
+
+    private void Start()
+    {
+        switch (Random.Range(1, 3))
+        {
+            case 1:
+                AudioManager.Instance.PlayBGM("Run");
+                break;
+            case 2:
+                AudioManager.Instance.PlayBGM("Run_2");
+                break;
+            case 3:
+                AudioManager.Instance.PlayBGM("Run_3");
+                break;
+        }
+    }
+
     private void Update()
     {
         GameScore += Time.deltaTime * 10;
