@@ -7,6 +7,8 @@ public class Character : MonoBehaviour
     public float rarity;
     public float speed;
     public float jump;
+    float fixedSpeed;
+    float fixedJump;
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +20,14 @@ public class Character : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetSpeed(float s)
+    {
+        fixedSpeed = s;
+    }
+    public void SetJump(float j)
+    {
+        fixedJump = j;
     }
 }

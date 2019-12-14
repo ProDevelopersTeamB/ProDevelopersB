@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GachaLogic : MonoBehaviour
 {
+    public GameObject syuutyuusen;
     public List<GameObject> characters;
     Text resultText;
     float drumRollPosX;
@@ -23,6 +24,7 @@ public class GachaLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.PlayBGM("Title", 1.0f, true);
         state = State.Idle;
         drumRollPosX = -6.0f;
         time = 0;
@@ -36,7 +38,7 @@ public class GachaLogic : MonoBehaviour
         {
             case State.DrumRollInit:
                 resultText = GameObject.Find("ResultText").GetComponent<Text>();
-                for (int i=0; i<5; i++)
+                for (int i=0; i<8; i++)
                 {
                     foreach (GameObject charaObj in characters)
                     {
@@ -53,6 +55,7 @@ public class GachaLogic : MonoBehaviour
                 this.transform.position = new Vector2(this.transform.position.x - 0.2f, 0);
                 if (!AudioManager.Instance.IsPlayingSE())
                 {
+                    Instantiate(syuutyuusen);
                     AudioManager.Instance.PlaySE("RollFinish");
                     state = State.Lottery;
                     foreach (Transform n in this.transform)
@@ -97,8 +100,10 @@ public class GachaLogic : MonoBehaviour
                 GameObject resultObject = characters[charaRand];
                 Character resultCharacter = resultObject.GetComponent<Character>();
                 resultCharacter.rarity = rarity;
-                resultCharacter.speed *= coefficient;
-                resultCharacter.jump *= coefficient;
+                float speed = resultCharacter.speed * coefficient;
+                float jump = resultCharacter.jump * coefficient;
+                resultCharacter.SetSpeed(speed);
+                resultCharacter.SetJump(jump);
 
                 Instantiate(resultObject);
                 string text = "レアリティ:";
@@ -106,10 +111,12 @@ public class GachaLogic : MonoBehaviour
                 {
                     text += "★";
                 }
-                text += "\nスピード: " + resultCharacter.speed;
-                text += "\nジャンプ: " + resultCharacter.jump;
+                text += "\nスピード: " + speed;
+                text += "\nジャンプ: " + jump;
                 resultText.text = text;
                 state = State.Result;
+                break;
+            case State.Result:
                 break;
             default:
                 break;
@@ -118,7 +125,9 @@ public class GachaLogic : MonoBehaviour
 
     public void StartGacha()
     {
+        AudioManager.Instance.PlayBGM("Gasha", 1.0f, true);
         AudioManager.Instance.PlaySE("DrumRoll");
+        AudioManager.Instance.PlaySE("Decide");
         state = State.DrumRollInit;
     }
 }
