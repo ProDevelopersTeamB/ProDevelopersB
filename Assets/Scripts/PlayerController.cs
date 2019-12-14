@@ -32,17 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D target)
     {
-        if(target.gameObject.tag == "floor")
-            jump = false;
-        else if(target.gameObject.tag == "floor2")
-            gameOver();
-        else if(target.gameObject.tag == "floor")
-            gameOver();
-    }
-
-    private void gameOver()
-    {
-        Debug.Log("GameOver");
+        jump = false;
     }
 
     public void setParam(float s, float j)

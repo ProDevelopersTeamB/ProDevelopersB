@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
         GameTime += Time.deltaTime;
         timeText.text = "時間: " + (int)GameTime;
 
-        if(GameTime > 60)
+        if(GameTime > 1)
         {
             if(!obstacleController.Floor2Flg)
                 StartCoroutine(obstacleController.CreateFloor2());

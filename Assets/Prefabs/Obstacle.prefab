@@ -52,7 +52,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 50, y: 50}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300008, guid: f92fdffb06a9a434aa0479c228817fdf, type: 3}
+  m_Sprite: {fileID: 21300034, guid: 04386d3906e60654aba83cd1353b07f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
