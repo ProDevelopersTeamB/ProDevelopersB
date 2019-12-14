@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ScoreResult : MonoBehaviour
 {
-    // 仮
-    int kyori = 12345;
-    float time = 125.204f;
-    int score = 22334455;
+    public int kyori;
+    public float time;
+    public int score;
 
     // Start is called before the first frame update
     void Start()
