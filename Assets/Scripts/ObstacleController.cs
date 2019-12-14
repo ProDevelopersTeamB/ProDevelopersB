@@ -7,6 +7,7 @@ public class ObstacleController : MonoBehaviour
     [SerializeField] private GameObject obstacle;
     [SerializeField] private GameObject floor2;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private PlayerController player;
 
     public bool ObstacleFlg;
     public bool Floor2Flg;
@@ -20,7 +21,8 @@ public class ObstacleController : MonoBehaviour
     {
         ObstacleFlg = true;
         yield return new WaitForSeconds(Random.Range(2f, 5f));
-        Instantiate (obstacle, canvas.transform);
+        var obstacleObj = Instantiate (obstacle, canvas.transform);
+        obstacleObj.GetComponent<Obstacle>().Speed = player.Speed;
         ObstacleFlg = false;
     }
 
@@ -28,7 +30,8 @@ public class ObstacleController : MonoBehaviour
     {
         Floor2Flg = true;
         yield return new WaitForSeconds(Random.Range(2f, 5f));
-        Instantiate (floor2, canvas.transform);
+        var floor2Obj = Instantiate (floor2, canvas.transform);
+        floor2Obj.GetComponent<Obstacle>().Speed = player.Speed;
         Floor2Flg = false;
     }
 }

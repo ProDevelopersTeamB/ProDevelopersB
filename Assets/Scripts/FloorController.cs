@@ -6,6 +6,7 @@ public class FloorController : MonoBehaviour
 {
     [SerializeField] private GameObject floor;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private PlayerController player;
     private GameObject tempFloor;
     private void Start()
     {
@@ -18,6 +19,7 @@ public class FloorController : MonoBehaviour
         if(pos.x < 424f)
         {
             tempFloor = Instantiate (floor, canvas.transform);
+            tempFloor.GetComponent<Floor>().Speed = player.Speed;
         }
     }
 }
