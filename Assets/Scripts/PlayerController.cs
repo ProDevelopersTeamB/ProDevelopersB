@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    float speed;
+    float jumpPower;
+    GameObject animal;
+
     public float flap = 2f;
     bool jump = false;
 
-    void Update () {
+    private void Start()
+    {
+        if (animal != null)
+        {
+            GameObject obj = Instantiate(animal);
+            obj.transform.position = this.transform.position;
+            obj.transform.parent = this.transform;
+        }
+    }
+
+    void Update ()
+    {
         if (Input.GetKeyDown("space") && !jump)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * flap);
@@ -28,5 +43,16 @@ public class PlayerController : MonoBehaviour
     private void gameOver()
     {
         Debug.Log("GameOver");
+    }
+
+    public void setParam(float s, float j)
+    {
+        speed = s;
+        jumpPower = j;
+    }
+    public void setAnimal(GameObject ani)
+    {
+        animal = ani;
+        Instantiate(animal);
     }
 }
