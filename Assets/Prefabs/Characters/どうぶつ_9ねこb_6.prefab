@@ -116,5 +116,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rarity: 0
-  speed: 0
-  jump: 0
+  speed: 26
+  jump: 22
