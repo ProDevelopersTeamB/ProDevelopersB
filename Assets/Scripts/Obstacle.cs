@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
     private void Update()
     {
         Vector3 pos = transform.localPosition;
-        pos.x -= (5 + pc.Speed * 2 / 10f);
+        pos.x -= (5 + pc.Speed * 2 / 10f) * 100 * Time.deltaTime;
         transform.localPosition = pos;
 
         // if(transform.localPosition.x < -612f)
