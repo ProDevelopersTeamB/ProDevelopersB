@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &1676617448047550250
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!114 &8251735327811360990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ee732b20b8b42b0a1b892dfbf29717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &2394631215498342952
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &3249731315384390719
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &4763952253299733844
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &5227126032174916851
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &6617634183829066266
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2753733735973052704
@@ -810,3 +817,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718cb0b0f38f54528a9ff6ee8e2c0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0

@@ -37,14 +37,30 @@ public class GameController : MonoBehaviour
         GameTime += Time.deltaTime;
         timeText.text = "時間: " + (int)GameTime;
 
-        if(GameTime > 1)
+        if(!obstacleController.CreateFlg)
         {
-            if(!obstacleController.Floor2Flg)
-                StartCoroutine(obstacleController.CreateFloor2());
+            switch (Random.Range(1, 3))
+            {
+                case 1:
+                    StartCoroutine(obstacleController.CreateObstacle());
+                    break;
+                case 2:
+                    StartCoroutine(obstacleController.CreateFloor2());
+                    break;
+                case 3:
+                    StartCoroutine(obstacleController.CreateFloor3());
+                    break;
+            }
         }
-        else if(!obstacleController.ObstacleFlg)
-        {
-            StartCoroutine(obstacleController.CreateObstacle());
-        }
+
+        // if(GameTime > 60)
+        // {
+        //     if(!obstacleController.Floor2Flg)
+        //         StartCoroutine(obstacleController.CreateFloor2());
+        // }
+        // else if(!obstacleController.ObstacleFlg)
+        // {
+        //     StartCoroutine(obstacleController.CreateObstacle());
+        // }
     }
 }
