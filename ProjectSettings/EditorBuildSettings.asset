@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GashaScene.unity
+    guid: 18975f3319e40c14d86c32d94360266b
+  - enabled: 1
+    path: Assets/Scenes/Run.unity
+    guid: 4acbb83790f2f424d813ffac9fa21b36
+  - enabled: 1
+    path: Assets/Scenes/ResultScore.unity
+    guid: d3d85412bdfb95e4aa71da6dd87b37f8
   m_configObjects: {}

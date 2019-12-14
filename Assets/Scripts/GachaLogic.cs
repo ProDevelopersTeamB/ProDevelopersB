@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GachaLogic : MonoBehaviour
 {
     public GameObject syuutyuusen;
     public List<GameObject> characters;
+    GameObject resultObject;
     Text resultText;
     float drumRollPosX;
-    float time;
+    float time, resultTime, speed, jump;
 
     enum State
     {
@@ -28,6 +30,7 @@ public class GachaLogic : MonoBehaviour
         state = State.Idle;
         drumRollPosX = -6.0f;
         time = 0;
+        resultTime = 0;
     }
 
     // Update is called once per frame
@@ -53,7 +56,7 @@ public class GachaLogic : MonoBehaviour
                 break;
             case State.DrumRoll:
                 this.transform.position = new Vector2(this.transform.position.x - 0.2f, 0);
-                if (!AudioManager.Instance.IsPlayingSE())
+                if (!AudioManager.Instance.IsPlayingSE() || Input.GetMouseButtonDown(0))
                 {
                     Instantiate(syuutyuusen);
                     AudioManager.Instance.PlaySE("RollFinish");
@@ -97,11 +100,11 @@ public class GachaLogic : MonoBehaviour
                 }
 
                 int charaRand = Random.Range(0, characters.Count - 1);
-                GameObject resultObject = characters[charaRand];
+                resultObject = characters[charaRand];
                 Character resultCharacter = resultObject.GetComponent<Character>();
                 resultCharacter.rarity = rarity;
-                float speed = resultCharacter.speed * coefficient;
-                float jump = resultCharacter.jump * coefficient;
+                speed = resultCharacter.speed * coefficient;
+                jump = resultCharacter.jump * coefficient;
                 resultCharacter.SetSpeed(speed);
                 resultCharacter.SetJump(jump);
 
@@ -115,12 +118,29 @@ public class GachaLogic : MonoBehaviour
                 text += "\nジャンプ: " + jump;
                 resultText.text = text;
                 state = State.Result;
+                resultTime = 0;
                 break;
             case State.Result:
+                resultTime += Time.deltaTime;
+                if (resultTime > 3.0f || Input.GetMouseButtonDown(0))
+                {
+                    StartCoroutine(this.invokeActionOnloadScene("Run", () => {
+                        var player = FindObjectOfType<PlayerController>() as PlayerController;
+                        player.setParam(speed, jump);
+                        player.setAnimal(resultObject);
+                    }));
+                }
                 break;
             default:
                 break;
         }
+    }
+    private IEnumerator invokeActionOnloadScene(string sceneName, System.Action onLoad)
+    {
+        var asyncOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        yield return asyncOp;
+        onLoad.Invoke();
+        SceneManager.UnloadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void StartGacha()
