@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     public float speed;
     public float jump;
     public bool isBig = false;
+    public bool isFly = false;
+    public string characterName;
     float fixedSpeed;
     float fixedJump;
 

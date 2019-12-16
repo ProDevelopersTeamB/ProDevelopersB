@@ -51,6 +51,8 @@ public class PlayerCollider : MonoBehaviour
             scoreResult.kyori = (int)gc.GameScore;
             scoreResult.time = gc.GameTime;
             scoreResult.SetScore((int)gc.GameScore);
+            scoreResult.characterName = pc.getCharacterName();
+            scoreResult.rarity = pc.getRarity();
         }));
         isDead = false;
     }

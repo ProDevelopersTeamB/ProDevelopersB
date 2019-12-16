@@ -12,7 +12,9 @@ public class GachaLogic : MonoBehaviour
     Text resultText;
     float drumRollPosX;
     float time, resultTime, speed, jump;
-    bool isBig;
+    int rarity;
+    string characterName;
+    bool isBig, isFly;
 
     enum State
     {
@@ -75,7 +77,6 @@ public class GachaLogic : MonoBehaviour
                 break;
             case State.Lottery:
                 int rarityRand = Random.Range(1, 101);
-                int rarity;
                 float coefficient;
                 if (rarityRand <= 5)
                 {
@@ -110,8 +111,10 @@ public class GachaLogic : MonoBehaviour
                 speed = resultCharacter.speed * coefficient;
                 jump = resultCharacter.jump * coefficient;
                 isBig = resultCharacter.isBig;
+                isFly = resultCharacter.isFly;
                 resultCharacter.SetSpeed(speed);
                 resultCharacter.SetJump(jump);
+                characterName = resultCharacter.characterName;
 
                 Instantiate(resultObject);
                 string text = "レアリティ:";
@@ -123,7 +126,11 @@ public class GachaLogic : MonoBehaviour
                 text += "\nジャンプ: " + jump;
                 if (isBig)
                 {
-                    text += "\nスキル: 1回だけブロックを破壊";
+                    text += "\nスキル: 1 回だけブロックを破壊";
+                }
+                if (isFly)
+                {
+                    text += "\nスキル: 2 回までジャンプできる";
                 }
                 resultText.text = text;
                 state = State.Result;
@@ -136,7 +143,7 @@ public class GachaLogic : MonoBehaviour
                     StartCoroutine(this.invokeActionOnloadScene("Run", () =>
                     {
                         var player = FindObjectOfType<PlayerController>() as PlayerController;
-                        player.setParam(speed, jump, isBig);
+                        player.setParam(speed, jump, rarity, characterName, isBig, isFly);
                         player.setAnimal(resultObject);
                     }));
                     state = State.End;

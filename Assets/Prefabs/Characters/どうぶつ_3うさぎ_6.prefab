@@ -117,4 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 1
   speed: 22
-  jump: 26
+  jump: 40
+  isBig: 0
+  isFly: 0
+  characterName: "\u3046\u3055\u304E"

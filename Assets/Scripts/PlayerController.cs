@@ -6,13 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     public float Speed;
     float jumpPower;
-    bool isBig;
+    bool isBig, isFly;
     GameObject animal;
 
     const float FLAP = 650f;
     bool jump = false;
+    bool doubleJump = false;
     float jumpedTime;
     bool isUsedSkill;
+    string characterName;
+    int rarity;
 
     private void Start()
     {
@@ -35,23 +38,37 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("space") && !jump && jumpedTime >= 0.3f)
         {
             AudioManager.Instance.PlaySE("Jump");
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
             jump = true;
             jumpedTime = 0;
+        }
+        else if (Input.GetKeyDown("space") && !doubleJump && isFly && jumpedTime >= 0.1f)
+        {
+            AudioManager.Instance.PlaySE("Jump");
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
+            doubleJump = true;
         }
     }
 
     void OnCollisionEnter2D(Collision2D target)
     {
         if (jumpedTime >= 0.3f)
+        {
             jump = false;
+            doubleJump = false;
+        }
     }
 
-    public void setParam(float s, float j, bool isBig = false)
+    public void setParam(float s, float j, int r, string n, bool isBig = false, bool isFly = false)
     {
         Speed = s;
         jumpPower = j;
+        rarity = r;
+        characterName = n;
         this.isBig = isBig;
+        this.isFly = isFly;
     }
     public void setAnimal(GameObject ani)
     {
@@ -65,5 +82,13 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public string getCharacterName()
+    {
+        return characterName;
+    }
+    public int getRarity()
+    {
+        return rarity;
     }
 }

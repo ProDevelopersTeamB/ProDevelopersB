@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ae161b71a8b8a4ca768e320a11e85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rarity: 0
+  rarity: 4
   speed: 18
-  jump: 30
+  jump: 15
+  isBig: 0
+  isFly: 1
+  characterName: "\u3072\u3088\u3053"
