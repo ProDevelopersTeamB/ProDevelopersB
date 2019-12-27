@@ -35,20 +35,47 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         jumpedTime += Time.deltaTime;
-        if (Input.GetKey("space") && !jump && jumpedTime >= 0.3f)
+
+        if (Input.touchCount > 0)
         {
-            AudioManager.Instance.PlaySE("Jump");
-            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
-            jump = true;
-            jumpedTime = 0;
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (!jump && jumpedTime >= 0.3f)
+                {
+                    AudioManager.Instance.PlaySE("Jump");
+                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
+                    jump = true;
+                    jumpedTime = 0;
+                }
+                else if (!doubleJump && isFly && jumpedTime >= 0.1f)
+                {
+                    AudioManager.Instance.PlaySE("Jump");
+                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
+                    doubleJump = true;
+                }
+            }
         }
-        else if (Input.GetKeyDown("space") && !doubleJump && isFly && jumpedTime >= 0.1f)
+        else
         {
-            AudioManager.Instance.PlaySE("Jump");
-            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
-            doubleJump = true;
+
+            if (Input.GetKey("space") && !jump && jumpedTime >= 0.3f)
+            {
+                AudioManager.Instance.PlaySE("Jump");
+                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
+                jump = true;
+                jumpedTime = 0;
+            }
+            else if (Input.GetKeyDown("space") && !doubleJump && isFly && jumpedTime >= 0.1f)
+            {
+                AudioManager.Instance.PlaySE("Jump");
+                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (FLAP + jumpPower * 10));
+                doubleJump = true;
+            }
         }
     }
 
